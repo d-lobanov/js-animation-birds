@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+	.canvas {
+		height: 500px;
+		width: 850px;
+		position: relative;
+		background-image: url("img/background.png");
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.figure {
+		position: absolute;
+		width: 100px;
+		height: 100px;
+	}
+
+	.figure div[color] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.bird div[color="red"] {
+		background-image: url("img/bird-red.png");
+		opacity: 0.5;
+		z-index: 4;
+	}	
+
+	.bird div[color="green"] {
+		background-image: url("img/bird-green.png");
+		opacity: 0.5;
+		z-index: 3;
+	}	
+
+	.bird div[color="blue"] {
+		background-image: url("img/bird-blue.png");
+		opacity: 0.5;
+		z-index: 2;
+	}
+
+	.bird div[color="white"] {
+		background-image: url("img/bird-white.png");
+		opacity: 1;
+		z-index: 1;
+	}
+	
+	.revert div {
+		-moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+	}
+
+	.block {
+		width: 100%;
+	}
+
+	.half-block {
+		width: 50%;
+		float: left;
+	}
+
+	.form-group {
+        display: block;
+        margin: 15px;
+    }
+
+    .form-group label {
+		width: 40%;
+		float: left;
+    }
+
+	</style>
+</head>
+
+
+<body>
+
+	<div class="figure bird" id="template" style="display: none">
+		<div color="red"></div>
+		<div color="green"></div>
+		<div color="blue"></div>
+		<div color="white"></div>
+	</div>
+
+	<div class="canvas" id="canvas">
+	</div>
+
+	<div class="block">
+		<div class="half-block">
+			<form id="addForm" class="add" onsubmit="formController.submit(); return false;">
+				<div class="form-group">
+					<label>Red occupancy: </label>
+					<input name="colorRed" type="range" min="0" max="100" step="1">
+					<span name="colorRed"></span> %
+				</div>	
+
+				<div class="form-group">
+					<label>Green occupancy: </label>
+					<input name="colorGreen" type="range" min="0" max="100" step="1"> 
+					<span name="colorGreen"></span> %
+				</div>
+
+				<div class="form-group">
+					<label>Blue occupancy: </label>
+					<input name="colorBlue" type="range" min="0" max="100" step="1"> 
+					<span name="colorBlue"></span> %
+				</div>
+
+				<div class="form-group">
+					<label>Start position: </label>
+					<input name="startPositionLeft" type="number" min="1" max="850" >
+					<input name="startPositionTop" type="number" min="1" max="500" >
+					<button name="buttonStartPosition" type="button">Choice</button> 
+				</div>
+
+				<div class="form-group">
+					<label>Finish position: </label>
+					<input name="finishPositionLeft" type="number" size="3" min="1" max="850" >
+					<input name="finishPositionTop" type="number" size="3" min="1" max="500" >
+					<button name="buttonFinishPosition" type="button">Choice</button> 
+				</div>	
+
+				<div class="form-group">
+					<label>Speed: </label>
+					<input name="speed" type="range" min="0" max="1000" step="1">
+					<span name="speed"></span> px/sek
+				</div>	
+
+				<div class="form-group">
+					<input name="submit" type="submit" value="Add">
+				</div>
+			</form>
+		</div>
+		<div class="half-block">
+			<div class="figure bird" id="example">
+				<div color="red"></div>
+				<div color="green"></div>
+				<div color="blue"></div>
+				<div color="white"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="js/mvvm.js"></script>
+	<script type="text/javascript" src="js/formController.js"></script>
+	<script type="text/javascript" src="js/figure.js"></script>
+	<script type="text/javascript" src="js/generatorFigure.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+
+
+</html>
