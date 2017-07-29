@@ -84,8 +84,8 @@ function FormController (model) {
 		this.addEventListener(button, 'click', self.addEventChoiceFinishCoordinates);
 
 		var colorNames = ['colorRed', 'colorGreen', 'colorBlue'];
-		for (var name in colorNames) {
-			var colorRange = form.querySelector('[name=colorRed]');
+		for (var i in colorNames) {
+			var colorRange = form.querySelector('[name=' + colorNames[i] + ']');
 			this.addEventListener(colorRange, 'input', self.onChangeColorRange);
 		}
 	};
